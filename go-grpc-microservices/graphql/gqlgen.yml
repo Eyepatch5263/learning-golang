@@ -1,0 +1,8 @@
+schema: schema.graphql
+
+models:
+  Account:
+    model: github.com/eyepatch5263/go-grpc-microservices/graphql.Account
+    fields:
+      orders:
+        resolver: true

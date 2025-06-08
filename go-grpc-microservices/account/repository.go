@@ -13,7 +13,7 @@ type Repository interface {
 	Close()
 	PutAccount(ctx context.Context, a Account) error
 	GetAccount(ctx context.Context, id string) (*Account, error)
-	ListAccounts(ctx context.Context,skip uint64,take uint64) ([]Account,error)
+	GetAccounts(ctx context.Context,skip uint64,take uint64) ([]Account,error)
 }
 
 
@@ -59,7 +59,7 @@ func(r *postgresRepository) GetAccount(ctx context.Context, id string) (*Account
 	
 }
 
-func(r *postgresRepository) ListAccounts(ctx context.Context,skip uint64,take uint64) ([]Account,error) {
+func(r *postgresRepository) GetAccounts(ctx context.Context,skip uint64,take uint64) ([]Account,error) {
 	rows,err:=r.db.QueryContext(ctx,"SELECT id,name,FROM accounts ORDER BY id DESC OFFSET $1 LIMIT $2",skip,take)
 	if err!=nil {
 		return nil,err

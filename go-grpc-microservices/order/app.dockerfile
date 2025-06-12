@@ -5,12 +5,13 @@ RUN apk --no-cache add gcc g++ make ca-certificates
 WORKDIR /go/src/github.com/eyepatch5263/go-grpc-microservices
 
 COPY go.mod go.sum ./
-
 COPY vendor vendor
 
+COPY order order
 COPY account account
+COPY product product
 
-RUN go build -mod vendor -o /go/bin/app ./account/cmd/account
+RUN go build -mod vendor -o /go/bin/app ./order/cmd/order
 
 FROM alpine:3.19
 

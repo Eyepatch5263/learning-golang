@@ -8,9 +8,9 @@ COPY go.mod go.sum ./
 
 COPY vendor vendor
 
-COPY account account
+COPY product product
 
-RUN go build -mod vendor -o /go/bin/app ./account/cmd/account
+RUN go build -mod vendor -o /go/bin/app ./product/cmd/product
 
 FROM alpine:3.19
 
